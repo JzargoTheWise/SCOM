@@ -4,13 +4,14 @@
     padding: 0;
     text-decoration: none;
     box-sizing: border-box;
-    vertical-align: baseline;
+    vertical-align:middle;
+    font-family:"RobotoCondensed Bold","Trebuchet MS",Helvetica,Arial,sans-serif;
 }
 body{
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: auto auto;
     grid-template-rows: 15% auto 5%;
     grid-template-areas: 
     'MT MT'
@@ -23,40 +24,98 @@ body{
     Fo - Footer
     */
 }
+
+
+/*Header info*/
 header{
     grid-area: MT;
     display: flex;
     justify-content: center;
 }
 header h1{
-    font-size: 3.5rem;
+    font-size: 2.5rem;
+    margin: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
 }
+
+/*Sidebar info*/
 .menu{
+    display: block;
     grid-area: Me;
-    padding-top: 2rem;
-    height: 50%;
-    background-color: #ddd;
+
+    height:25rem;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #000;
 }
-.menu .item{
-    border: 0.1rem #fff solid;
-    height: 25%;
-    width: 100%;
+.menu .item-dropdown{
+    margin: 1rem;
 }
+
+/*Misc content info*/  
 .content{
     grid-area: Co;
 }
 .content .main{
-    padding: 2rem;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
-.content .others{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
-    grid-template-areas: 
-    'A1 A2'
-    'A3 A4';
-    padding: 2rem;
+
+@media screen and (min-width: 600px) {
+    .content .others{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: 
+        'A1 A2'
+        'A3 A4';
+        padding: 2rem;
+        
+    }
+    .menu .small_sb{
+        display:none;
+    }
+    .menu .large_sb{
+        display:block;
+    }
+    .menu{
+        min-width: 10rem;
+    }
 }
+@media screen and (max-width: 599px) {
+    .content .others{
+        display: block;
+        padding: 2rem;
+    }
+    .menu .small_sb{
+        display:block;
+    }
+    .menu .large_sb{
+        display:none;
+    }
+    .menu:hover .small_sb{
+        display:none;
+    }
+    .menu:hover .large_sb{
+        display:block;
+    }
+    .menu:hover {
+        position:absolute;
+        top: 15%;
+        min-width: 10rem;
+    }
+    body{
+        grid-template-columns: 4rem 85%;
+    }
+    
+}
+.content .others .article{
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+}
+
 footer{
     grid-area: Fo;
     background-color: #ddd;
